@@ -1,26 +1,27 @@
 
-import { StyleSheet, Text, View } from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import React from 'react';
+import Signup from './SignUp'
+import {NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './LoginScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Welcome to the Chit Chat!</Text>
-      
-    </View>
-  );
+const Stack = createNativeStackNavigator();
+const App=()=>{
+return(
+  <NavigationContainer>
+<Stack.Navigator initialRouteName="Signup">
+        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      </Stack.Navigator>
+  </NavigationContainer>
+
+);
 }
+export default App;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text:{
-    padding:20,
-    fontSize:30,
-    
-  }
-  
-});
+    container: {
+      flex: 1,
+    },
+  });
