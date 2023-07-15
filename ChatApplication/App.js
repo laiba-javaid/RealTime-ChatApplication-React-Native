@@ -1,27 +1,31 @@
-
-import {View, StyleSheet} from 'react-native';
 import React from 'react';
-import Signup from './SignUp'
-import {NavigationContainer} from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from './LoginScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import AppStack from './Navigation/AppStack';
+import AuthStack from './Navigation/AuthStack';
+import { COLORS } from './Color';
+import { useNavigation } from '@react-navigation/native';
 
-const Stack = createNativeStackNavigator();
-const App=()=>{
-return(
-  <NavigationContainer>
-<Stack.Navigator initialRouteName="Signup">
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      </Stack.Navigator>
-  </NavigationContainer>
+const Stack = createStackNavigator();
 
-);
+export default function App() {
+  const navigation = useNavigation();
+  return (
+      <NavigationContainer ref={r => navigation.setTopLevelNavigator(r)}>
+        <Stack.Navigator
+          headerMode="none"
+          detachInactiveScreens={false}
+          initialRouteName="Auth"
+          screenOptions={{
+            cardStyle :{ backgroundColor: COLORS.white},
+            gestureEnabled: true,
+            backgroundColor:COLORS.button,
+            gestureDirection: 'horizontal',
+            ...TransitionPresets.SlideFromRightIOS,
+          }}>
+          <Stack.Screen name="Auth" component={AuthStack} />
+          <Stack.Screen name="AppStack" component={AppStack} />
+        </Stack.Navigator>
+      </NavigationContainer>
+  );
 }
-export default App;
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-  });
