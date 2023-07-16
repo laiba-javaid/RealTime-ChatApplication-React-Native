@@ -6,14 +6,12 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ScrollView,
   Image 
 } from 'react-native';
 import {
   NativeBaseProvider
 } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-import ChatBuzzLogo from './imgSrc/ChatBuzz.png';
 import { COLORS } from '../Color';
 import { FONTS } from '../Font';
 
@@ -35,7 +33,7 @@ export default function SignUp() {
     
     <View style={styles.container}>
     <Image style={styles.logoImage} 
-        source={ChatBuzzLogo}
+        source={require('../imgSrc/ChatBuzzLogo.png')}
         // resizeMode="cover"
           accessible={true}
           accessibilityLabel={'Logo'}     
@@ -163,7 +161,7 @@ export default function SignUp() {
                 <Text style={styles.smallTxt}>Existing user?</Text>
                 <TouchableOpacity 
                 style={{marginLeft: 4}}
-                onPress={()=>navigation.navigate('LoginScreen')}>
+                onPress={()=>navigation.navigate('Login')}>
                   <Text style={styles.register}>Login Now</Text>
                 </TouchableOpacity>
               </View>

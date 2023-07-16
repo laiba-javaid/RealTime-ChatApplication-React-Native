@@ -2,7 +2,7 @@ import { Icon } from 'native-base';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TextInput, SectionList, TouchableOpacity, FlatList } from 'react-native';
 //import moment from 'moment';
-import MsgComponent from '../../Component/Chat/MsgComponent';
+import MsgComponent from '../MsgComponent';
 import { COLORS } from '../Color';
 import ChatHeader from '../Header/ChatHeader';
 

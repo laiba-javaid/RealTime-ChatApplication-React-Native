@@ -1,11 +1,11 @@
 import React,  { useEffect,useState } from 'react';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import EntypoIcon from 'react-native-vector-icons/Entypo'
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { COLORS } from './Color';
-  import { FONTS } from './Font';
+import {Ionicons}from '@expo/vector-icons/Ionicons';
+import { COLORS } from '../Color';
+  import { FONTS } from '../Font';
   import { useNavigation } from '@react-navigation/native';
-  import ChatBuzzLogo from './imgSrc/ChatBuzz.png';
+ 
 import {
   ScrollView,
   Text,
@@ -22,6 +22,8 @@ export default function Login() {
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
   const navigation = useNavigation();
+ 
+
   // const [loggedIn, onLogin] = useState(false);
   useEffect(() => {}, []);
 
@@ -29,7 +31,7 @@ export default function Login() {
      
     <ScrollView style={styles.container}>
     <Image style={styles.logoImage} 
-        source={ChatBuzzLogo}
+        source={require('../imgSrc/ChatBuzzLogo.png')}
         // resizeMode="cover"
           accessible={true}
           accessibilityLabel={'Logo'}     
@@ -55,7 +57,7 @@ export default function Login() {
                     <View style={styles.inputIconView}>
                       <Ionicons
                         name="ios-mail" size={32} color="white"
-                        
+   
                       />
                     </View>
           <TextInput

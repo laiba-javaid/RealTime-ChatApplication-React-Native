@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/native-stack';
 import { COLORS } from '../Color';
 import Home from '../Screens/Home';
 import AllUser from '../Screens/AllUser';

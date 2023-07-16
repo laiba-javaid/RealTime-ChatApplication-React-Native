@@ -1,5 +1,6 @@
 import { Icon } from 'native-base'
 import React from 'react'
+import { useSelector } from '@reduxjs/toolkit';
 import { View, Text, StyleSheet } from 'react-native'
 import { Avatar } from 'react-native-elements/dist/avatar/Avatar'
 import { COLORS } from './Color'
