@@ -1,13 +1,13 @@
 import { Icon } from 'native-base'
 import React from 'react'
-import { useSelector } from '@reduxjs/toolkit';
+//import { useSelector } from '@reduxjs/toolkit';
 import { View, Text, StyleSheet } from 'react-native'
 import { Avatar } from 'react-native-elements/dist/avatar/Avatar'
-import { COLORS } from './Color'
-import { FONTS } from './Font'
+import { COLORS } from '../Color'
+import { FONTS } from '../Font'
 
 const HomeHeader = () => {
-    const {userData}=useSelector(state=>state.User)
+    //const {userData}=useSelector(state=>state.User)
     return (
         <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',
         padding:10,paddingHorizontal:15,backgroundColor:COLORS.white,elevation:2,paddingVertical:15}}>
@@ -19,7 +19,7 @@ const HomeHeader = () => {
                  style={{color:COLORS.theme,marginRight:7}}
                 />
                 <Avatar 
-                  source={{uri: userData.img}} 
+                  source={require('../imgSrc/ChatBuzzLogo.png')} 
                   rounded
                   size="small" />
             </View>

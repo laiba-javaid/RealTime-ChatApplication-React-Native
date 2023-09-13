@@ -1,31 +1,38 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/native-stack';
-import { TransitionPresets} from '@react-navigation/native-stack'
-import AppStack from './Navigation/AppStack';
-import AuthStack from './Navigation/AuthStack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Login from './Screens/Login';
+import SignUp from './Screens/SignUp';
+import Home from './Screens/Home';
+import AllUser from './Screens/AllUser';
+import SingleChat from './Screens/SingleChat';
 import { COLORS } from './Color';
-import { useNavigation } from '@react-navigation/native';
 
-const Stack = createStackNavigator();
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const navigation = useNavigation();
+  
   return (
-      <NavigationContainer ref={r => navigation.setTopLevelNavigator(r)}>
+      <NavigationContainer>
         <Stack.Navigator
           headerMode="none"
+          headerShown= {false}
           detachInactiveScreens={false}
-          initialRouteName="Auth"
+          initialRouteName="Login"
           screenOptions={{
             cardStyle :{ backgroundColor: COLORS.white},
             gestureEnabled: true,
             backgroundColor:COLORS.button,
             gestureDirection: 'horizontal',
-            ...TransitionPresets.SlideFromRightIOS,
+            animation: 'slide_from_right', //<-- this is what will do the trick
+          presentation: 'card',
           }}>
-          <Stack.Screen name="Auth" component={AuthStack} />
-          <Stack.Screen name="AppStack" component={AppStack} />
+          <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
+          <Stack.Screen name="Signup" component={SignUp} options={{headerShown: false}}/>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="AllUser" component={AllUser} />
+          <Stack.Screen name="SingleChat" component={SingleChat} />
         </Stack.Navigator>
       </NavigationContainer>
   );

@@ -1,10 +1,11 @@
-import React,  { useEffect,useState } from 'react';
+import React,  { useState } from 'react';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import EntypoIcon from 'react-native-vector-icons/Entypo'
-import {Ionicons}from '@expo/vector-icons/Ionicons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { COLORS } from '../Color';
   import { FONTS } from '../Font';
   import { useNavigation } from '@react-navigation/native';
+
  
 import {
   ScrollView,
@@ -25,7 +26,7 @@ export default function Login() {
  
 
   // const [loggedIn, onLogin] = useState(false);
-  useEffect(() => {}, []);
+  
 
   return (
      
@@ -56,7 +57,7 @@ export default function Login() {
                 <View style={[styles.inputContainer,{marginTop:10}]}>
                     <View style={styles.inputIconView}>
                       <Ionicons
-                        name="ios-mail" size={32} color="white"
+                        name="ios-mail" size={18} color="white"
    
                       />
                     </View>
@@ -66,7 +67,7 @@ export default function Login() {
             placeholderTextColor={COLORS.liteBlack}
             underlineColorAndroid="transparent"
             onChangeText={onChangeEmail}
-            keyboardType="number-pad"
+            keyboardType="default"
             placeholder={'Enter Email'}
             
           />
@@ -183,7 +184,7 @@ const styles = StyleSheet.create({
   inputs: {
     borderBottomColor: COLORS.white,
     flex: 1,
-    color: COLORS.liteBlack,
+    color: COLORS.black,
     paddingLeft: 10,
     fontFamily : FONTS.Regular,
   },

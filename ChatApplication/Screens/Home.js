@@ -1,4 +1,4 @@
-import {Container, Icon} from 'native-base';
+import {Container, Icon,NativeBaseConfigProvider} from 'native-base';
 import React from 'react';
 import { FlatList, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import {ListItem, Avatar} from 'react-native-elements';
@@ -71,37 +71,44 @@ const listData = [
   },
 ];
 
-const Home = () => {
-  const renderItem = ({item}) => (
+export default function Home() {
+  const navigation = useNavigation();
+  const renderItem = ({item}) => {
+  const { name, avatar_url, subtitle } = item;
+    return(
+
+    
     <ListItem 
     // bottomDivider 
     // activeOpacity={1}
     containerStyle={{paddingVertical:8,marginVertical:0}}
     onPress={()=>navigation.navigate('SingleChat',{data:item})}>
       <Avatar 
-      source={{uri: item.avatar_url}} 
+      source={{uri: avatar_url}} 
       rounded
-      title={item.name}
+      title={name}
       size="medium" />
       <ListItem.Content>
-        <ListItem.Title style={{fontFamily:FONTS.Medium,fontSize:14}}>
-           {item.name}
+        <ListItem.Title style={{fontFamily:FONTS.Regular,fontSize:14}}>
+           {name}
         </ListItem.Title>
         <ListItem.Subtitle 
         style={{fontFamily:FONTS.Regular,fontSize:12}}  numberOfLines={1}>
-          {item.subtitle}
+          {subtitle}
         </ListItem.Subtitle>
       </ListItem.Content>
     </ListItem>
-  );
-  const navigation = useNavigation();
+    )
+  };
+  
   return (
+    <NativeBaseConfigProvider>
     <Container style={{flex: 1, backgroundColor: COLORS.white}}>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} />
       <HomeHeader />
       <FlatList
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         data={listData}
         renderItem={renderItem}
       />
@@ -115,10 +122,11 @@ const Home = () => {
           />
       </TouchableOpacity>
     </Container>
+    </NativeBaseConfigProvider>
   );
 };
 
-export default Home;
+
 
 const styles = StyleSheet.create({
   but: {
